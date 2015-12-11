@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">LearnAndroidByAndroid</string>
     <string name="action_settings">Settings</string>
+    <string-array name="snackbar_duration">
+        <item>LENGTH_INDEFINITE</item>
+        <item>LENGTH_LONG</item>
+        <item>LENGTH_SHORT</item>
+    </string-array>
 </resources>
