@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,13 +16,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText editText;
     Button buttonSnackbar;
     TextView textView;
     Spinner spinner;
+    String clickedItem;
+    int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,23 +45,46 @@ public class MainActivity extends AppCompatActivity {
 // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
+        spinner.setOnItemSelectedListener(this);
+
 
         buttonSnackbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String message = editText.getText().toString();
 
-                Snackbar.make(v, message, Snackbar.LENGTH_LONG)
+                Snackbar.make(v, message, i)
                         .setAction("Action", null).show();
 
-                textView.setText("Snackbar.make(v," + message + ", Snackbar.LENGTH_LONG)setAction(\"Action\", null).show()");
+                textView.setText("Snackbar.make(v," + message + ","+ clickedItem+" )setAction(\"Action\", null).show()");
 
             }
         });
-
-
     }
 
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        clickedItem = (parent.getItemAtPosition(position)).toString();
+
+        switch (clickedItem) {
+            case "Snackbar.LENGTH_INDEFINITE":
+                i = Snackbar.LENGTH_INDEFINITE;
+                break;
+            case "Snackbar.LENGTH_LONG":
+                i = Snackbar.LENGTH_LONG;
+                break;
+            case "Snackbar.LENGTH_SHORT":
+                i = Snackbar.LENGTH_SHORT;
+                break;
+
+        }
+        }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
