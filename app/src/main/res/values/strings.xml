@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">LearnAndroidByAndroid</string>
     <string name="action_settings">Settings</string>
+    <string name="TextMessage">Text message</string>
+    <string name="EditTextMessage">This is your message text</string>
+    <string name="Duration">Duration</string>
+    <string name="Code">Code</string>
+    <string name="Output">Output</string>
     <string-array name="snackbar_duration">
-        <item>Snackbar.LENGTH_INDEFINITE</item>
         <item>Snackbar.LENGTH_LONG</item>
         <item>Snackbar.LENGTH_SHORT</item>
+        <item>Snackbar.LENGTH_INDEFINITE</item>
     </string-array>
 </resources>
