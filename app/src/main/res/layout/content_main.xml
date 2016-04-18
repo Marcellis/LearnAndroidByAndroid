@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,9 +18,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".MainActivity"
-    tools:showIn="@layout/activity_main">
+
+ >
 
     <TextView
         android:layout_width="match_parent"
@@ -23,10 +31,8 @@
         android:id="@+id/editTextSnackbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/EditTextMessage"
         android:inputType="text"
-        android:text="@string/EditTextMessage" />
-
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -40,20 +46,17 @@
         android:layout_height="wrap_content"
         android:entries="@array/snackbar_duration" />
 
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Action"
+        android:text="@string/action_text"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <EditText
         android:id="@+id/editTextAction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="action text"
         android:inputType="text" />
-
 
     <Button
         android:id="@+id/buttonSnackbar"
@@ -82,7 +85,6 @@
             android:text="@string/Output" />
     </LinearLayout>
 
-
 </LinearLayout>
 
-
+</ScrollView>

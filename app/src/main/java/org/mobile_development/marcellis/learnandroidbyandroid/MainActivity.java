@@ -1,5 +1,6 @@
 package org.mobile_development.marcellis.learnandroidbyandroid;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView;
     private Spinner spinner;
     private String clickedItem;
-    private int i;
+    private int duration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //initialize widgets
-
         editText = (EditText) findViewById(R.id.editTextSnackbar);
         editTextAction = (EditText) findViewById(R.id.editTextAction);
         buttonSnackbar = (Button) findViewById(R.id.buttonSnackbar);
@@ -39,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.spinnerSnackbar);
 
         // get selected item of spinner
-
         buttonSnackbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,25 +48,30 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (clickedItem) {
                     case "Snackbar.LENGTH_INDEFINITE":
-                        i = Snackbar.LENGTH_INDEFINITE;
+                        duration = Snackbar.LENGTH_INDEFINITE;
                         break;
                     case "Snackbar.LENGTH_LONG":
-                        i = Snackbar.LENGTH_LONG;
+                        duration = Snackbar.LENGTH_LONG;
                         break;
                     case "Snackbar.LENGTH_SHORT":
-                        i = Snackbar.LENGTH_SHORT;
+                        duration = Snackbar.LENGTH_SHORT;
                         break;
                 }
 
                 String message = editText.getText().toString();
                 String action = editTextAction.getText().toString();
 
-                Snackbar snackbar = Snackbar.make(v, message, i);
+                Snackbar snackbar = Snackbar.make(v, message, duration);
                 if (!action.equals("")) {
                     snackbar.setAction(action, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            // You can put actions here
+
+                            Toast.makeText(
+                                    MainActivity.this,
+                                    "snackbar clicked",
+                                    Toast.LENGTH_LONG).show();
+
                         }
                     });
                 }
@@ -76,7 +81,12 @@ public class MainActivity extends AppCompatActivity {
                 if (!action.equals("")) {
                     textView.append("\nsnackbar.setAction(\"" + action + "\",");
 
-                    textView.append ("new View.OnClickListener() \n { @Override \n public void onClick (View v) { \n  // You can put actions here \n  } }); ");
+                    textView.append ("new View.OnClickListener() \n { @Override \n public void onClick (View v) { \n  // You can put actions here \n "+
+                            "    //We have choosen to use a toast message" +
+                            "    Toast.makeText("+
+                            "MainActivity.this," +
+                            " \"snackbar clicked\"," +
+                            "Toast.LENGTH_LONG).show(); } }); ");
 
                 }
                 textView.append("\nsnackbar.show();");
