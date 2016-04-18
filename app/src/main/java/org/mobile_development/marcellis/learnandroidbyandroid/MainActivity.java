@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     snackbar.setAction(action, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            .setText("This actions change text in message");
+                            // You can put actions here
                         }
                     });
                 }
@@ -74,7 +74,10 @@ public class MainActivity extends AppCompatActivity {
 
                 textView.setText("Snackbar snackbar =  Snackbar.make( View ,\"" + message + "\", " + clickedItem + " );");
                 if (!action.equals("")) {
-                    textView.append("\nsnackbar.setAction(\"" + action + "\")");
+                    textView.append("\nsnackbar.setAction(\"" + action + "\",");
+
+                    textView.append ("new View.OnClickListener() \n { @Override \n public void onClick (View v) { \n  // You can put actions here \n  } }); ");
+
                 }
                 textView.append("\nsnackbar.show();");
 
